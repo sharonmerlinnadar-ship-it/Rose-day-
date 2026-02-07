@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rose Day Surprise</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#ffe6ee,#fff);
+  text-align:center;
+  overflow:hidden;
+}
+
+h1{
+  color:#ff2f68;
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
+}
+
+.slide{ margin:40px 10px; }
+
+img{
+  width:80%;
+  max-width:300px;
+  border-radius:15px;
+}
+
+.tap{
+  font-size:18px;
+  color:#ff2f68;
+  animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+  0%{opacity:1;}
+  50%{opacity:0.5;}
+  100%{opacity:1;}
+}
+
+.rose{
+  position:fixed;
+  top:-50px;
+  font-size:24px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{ transform:translateY(110vh) rotate(360deg); }
+}
+
+.kiss{
+  position:fixed;
+  top:-50px;
+  font-size:30px;
+  animation:kissFall linear infinite;
+}
+
+@keyframes kissFall{
+  to{ transform:translateY(110vh); opacity:0; }
+}
+
+.floating{
+  position:fixed;
+  bottom:-50px;
+  color:#ff2f68;
+  font-size:20px;
+  animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+  to{ transform:translateY(-120vh); opacity:0; }
+}
+
+button{
+  background:#ff2f68;
+  color:white;
+  border:none;
+  padding:12px 22px;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:20px;
+}
+</style>
+</head>
+
+<body onclick="playMusic()">
+
+<div class="slide">
+  <h1>I love you laddu 🥺💖</h1>
+  <p>Just like this rose, you make my days brighter without even trying. I love you so much laddu 🌹</p>
+</div>
+
+<p>🎵 I think they call this love</p>
+
+<p>
+  ILY laddu<br>
+  ILY laddu<br>
+  ILY laddu
+</p>
+
+<div class="slide"><img src="pic1.jpg"></div>
+<div class="slide"><img src="pic2.jpg"></div>
+<div class="slide"><img src="pic3.jpg"></div>
+
+<h2 style="color:#ff2f68;">Happy Rose Day laddu 🌹❤️</h2>
+<div class="tap">Tap anywhere if music doesn't start 💕</div>
+
+<audio id="song" loop autoplay muted>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const song=document.getElementById("song");
+
+// try autoplay
+window.onload=()=>{
+  song.muted=false;
+  song.play().catch(()=>{});
+};
+
+function playMusic(){
+  song.muted=false;
+  song.play();
+}
+
+// animations
+for(let i=0;i<25;i++){
+  let r=document.createElement("div");
+  r.className="rose";
+  r.innerHTML="🌹";
+  r.style.left=Math.random()*100+"vw";
+  r.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(r);
+}
+
+for(let i=0;i<15;i++){
+  let k=document.createElement("div");
+  k.className="kiss";
+  k.innerHTML="💋";
+  k.style.left=Math.random()*100+"vw";
+  k.style.animationDuration=(3+Math.random()*4)+"s";
+  document.body.appendChild(k);
+}
+
+for(let i=0;i<12;i++){
+  let f=document.createElement("div");
+  f.className="floating";
+  f.innerHTML="ILY laddu 💖";
+  f.style.left=Math.random()*100+"vw";
+  f.style.animationDuration=(5+Math.random()*4)+"s";
+  document.body.appendChild(f);
+}
+</script>
+
+</body>
+</html>
